@@ -1,10 +1,8 @@
 const mongoose = require("mongoose")
 const {db_url,db_name} = require("../config")
 
-
 //mongodb connection
 mongoose.connect(db_url , {
-    dbName : db_name,
     useFindAndModify : true,
     useNewUrlParser : true,
     useUnifiedTopology : true,

@@ -10,7 +10,7 @@ app.use(express.json());
 app.use("/api/user",user);
 
 app.listen(port, ()=> {
-    console.log(`listening on port ${port} on ${environment} environment .... `);
+    console.log(`listening on port '${port}' on ${environment} environment .... `);
 });
 
 

@@ -1,14 +1,11 @@
 const express = require("express")
 const router = express.Router();
+const userController = require("../controllers/users");
+const userSchemaMiddleware = require("../middlewares/userSchemaMiddleware");
 
 
 //get user details
-router.get("/" , (req,res) => {
-    res.status(200).send({
-        status : "successs",
-        message : "no user data "
-    });
-});
+router.get("/" , userController.getUserController);
 
 //get specific user details
 router.get("/:id" , (req,res) => {
@@ -23,27 +20,14 @@ router.get("/:id" , (req,res) => {
 });
 
 //register a new user
-router.post("/create" , (req,res) => {
-    let details = req.body;
-
-    console.log(JSON.stringify(details));
-
-    res.status(201).send({
-        status : "success",
-        data : {
-            name : req.body.name,
-            username : req.body.username,
-            email : req.body.email,
-
-        }
-    });
-
-});
+router.post("/create" ,userSchemaMiddleware ,userController.registerUserController);
 
 //update user details
 router.put("/edit" , (req,res) => {
 
 });
+
+
 
 //delete user
 router.delete("/" , (req,res) => {
